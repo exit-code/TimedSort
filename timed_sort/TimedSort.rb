@@ -5,6 +5,7 @@ require 'colorize'
 class TimedSort
   include Algorithm
   
+  # Uses instance_methods to populate menu
   def get_menu
     sorted_methods = Algorithm.instance_methods.sort
     puts ''
@@ -17,6 +18,7 @@ class TimedSort
     route_input(response)
   end
 
+  # Clears terminal - works on Windows, MacOS, and Linux
   def clear_terminal
     RUBY_PLATFORM =~ /win32|win64|\.NET|windows|cygwin|mingw32/i ? system('cls') : system('clear')
   end
@@ -43,10 +45,19 @@ class TimedSort
       selection_sort(generate_random_array)
     end
   end
+  
+  def set_array_size
+    puts "How many elements do you want in the array?"
+    response = gets.chomp!
+  end
 
+
+
+  # Creates big array that is used for sorting.
   def generate_random_array  
     big_array = []
-    i = 1000
+    # Adjust this value to to increase/decrease array size used for sorting.
+    i = 100
     
     while i >= 1 
       big_string = (0...50).map { ('a'..'z').to_a[rand(26)] }.join
@@ -56,6 +67,7 @@ class TimedSort
       big_array       
   end
 
+  #TODO - Add a loading bar while sorting is occuring
   def loading_bar
     loading_array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
     1.upto(loading_array.length.to_i) do |i|
@@ -67,4 +79,3 @@ class TimedSort
 end
 timer = TimedSort.new
 timer.get_menu
-

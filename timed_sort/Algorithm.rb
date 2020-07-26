@@ -107,7 +107,6 @@ module Algorithm
   end
 
   def quick_sort(array)
-    # TODO - needs to be broken into two methods
     return array if array.length <= 1
     start = Time.now
     pivot = array.delete_at(rand(array.length))
@@ -121,14 +120,16 @@ module Algorithm
       else
         right << x
       end
-    end
-
     finish = Time.now
     diff = finish - start
-    puts "The Merge Sort completed in #{diff} and seconds.".green
-    return *quick_sort(left), pivot ,*quick_sort(right)    
+    print "The Quick Sort completed in ".green
+    printf("%.7f seconds\n ", diff)
     sleep(2)
     restart_loop
+    end
+
+    return *quick_sort(left), pivot ,*quick_sort(right)    
+
   end
 
   def heap_sort(array)
