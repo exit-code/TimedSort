@@ -29,13 +29,17 @@ class TimedSort
     case response.downcase
     when "1"
       bubble_sort(generate_random_array)
-    when "2"
+    when "2", "3"
+      heap_sort(generate_random_array)
+    when "4"
       insertion_sort(generate_random_array)
-    when "3", "4"
+    when "5", "6"
       merge_sort(generate_random_array)
-    when "5"
+    when "7"
+      quick_sort(generate_random_array)
+    when "8"
       ruby_sort(generate_random_array)
-    when "6"
+    when "9"
       selection_sort(generate_random_array)
     end
   end

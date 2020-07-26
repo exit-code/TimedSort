@@ -31,8 +31,6 @@ module Algorithm
     restart_loop
   end
 
-  
-
   def insertion_sort(array)
     start = Time.now
     (array.length).times do |j|
@@ -72,6 +70,7 @@ module Algorithm
   end
 
   def merge_sort(array)
+    # TODO needs scientific notation conversion
     start = Time.now
     if array.length <= 1
       array
@@ -87,7 +86,7 @@ module Algorithm
   end
   
   def merge(left, right)
-    diff_1 = diff_1.to_i
+    # TODO needs scientific notation conversion
     start = Time.now
     if left.empty?
       right
@@ -101,6 +100,69 @@ module Algorithm
     finish = Time.now
     diff = finish - start
     puts "The Merge Sort completed in #{diff} and seconds.".green
+    sleep(2)
+    restart_loop
+  end
+
+  def quick_sort(array)
+    # TODO - need to be added to loop
+    # TODO - needs to be broken into two methods
+    return array if array.length <= 1
+    start = Time.now
+    pivot = array.delete_at(rand(array.length))
+  
+    left = Array.new
+    right = Array.new
+  
+    array.each do |x|
+      if x <= pivot
+        left << x
+      else
+        right << x
+      end
+    end
+
+    finish = Time.now
+    diff = finish - start
+    puts "The Merge Sort completed in #{diff} and seconds.".green
+    return *quick_sort(left), pivot ,*quick_sort(right)    
+    sleep(2)
+    restart_loop
+  end
+
+  def heap_sort(array)
+    start = Time.now
+    n = array.length - 1
+    a = array
+    
+    (n / 2).downto(0) do |i|      
+      create_max_heap(a, i, n) 
+    end
+  
+    while n > 0
+      a[0], a[n] = a[n], a[0]
+      n -= 1
+      finish = Time.now
+      diff = finish - start
+      puts "The Heap Sort completed in #{diff} and seconds.".green
+      sleep(2)
+      create_max_heap(a, 0, n)
+    end
+    a
+  end
+  
+  def create_max_heap(array, parent, limit)
+    start = Time.now
+    root = array[parent]
+    while (child = 2 * parent) <= limit do
+      child += 1 if child < limit && array[child] < array[child + 1]
+      break if root >= array[child]
+      array[parent], parent = array[child], child
+    end
+    array[parent] = root
+    finish = Time.now
+    diff = finish - start
+    puts "The Create Max Heap Sort completed in #{diff} and seconds.".green
     sleep(2)
     restart_loop
   end
