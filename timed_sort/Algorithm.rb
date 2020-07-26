@@ -80,7 +80,8 @@ module Algorithm
       right = merge_sort(array[mid..array.length])
       finish = Time.now
       diff = finish - start
-      puts "The Merge completed in #{diff} and seconds.".green  
+      print "The Merge Sort completed in ".green
+      printf("%.7f seconds\n ", diff)  
       merge(left, right)
     end
   end
@@ -99,13 +100,13 @@ module Algorithm
     end
     finish = Time.now
     diff = finish - start
-    puts "The Merge Sort completed in #{diff} and seconds.".green
+    print "The Merge completed in ".green
+    printf("%.7f seconds\n ", diff)
     sleep(2)
     restart_loop
   end
 
   def quick_sort(array)
-    # TODO - need to be added to loop
     # TODO - needs to be broken into two methods
     return array if array.length <= 1
     start = Time.now
@@ -162,7 +163,8 @@ module Algorithm
     array[parent] = root
     finish = Time.now
     diff = finish - start
-    puts "The Create Max Heap Sort completed in #{diff} and seconds.".green
+    print "The Create Max Heap Sort completed in ".green
+    printf("%.7f seconds\n ", diff)
     sleep(2)
     restart_loop
   end
