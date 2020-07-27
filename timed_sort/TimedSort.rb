@@ -15,16 +15,16 @@ class TimedSort
   # Uses instance_methods to populate menu
   def get_menu
     sorted_methods = Algorithm.instance_methods.sort
-    puts ''
-    puts 'Choose an Algorithm'.red
+    puts 'Choose an Algorithm'.red.underline
     sorted_methods.each do |a |
       puts "#{sorted_methods.index(a) + 1}: #{a}" 
     end
+    
     response = gets.chomp!
     clear_terminal
     route_input(response)
   end
-
+  
   # Clears terminal - works on Windows, MacOS, and Linux
   def clear_terminal
     RUBY_PLATFORM =~ /win32|win64|\.NET|windows|cygwin|mingw32/i ? system('cls') : system('clear')
@@ -81,4 +81,5 @@ class TimedSort
   end
 
 end
+
 timer = TimedSort.new
