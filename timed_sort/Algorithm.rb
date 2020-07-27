@@ -26,7 +26,8 @@ module Algorithm
     array.sort
     finish = Time.now
     diff = finish - start
-    puts "The Ruby Sort completed in #{diff} seconds.".green
+    print "The Ruby Sort completed in ".green
+    printf("%.7f seconds\n ", diff)
     sleep(2)
     restart_loop
   end

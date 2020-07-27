@@ -1,10 +1,17 @@
 #!/usr/bin/ruby
+
 require './Algorithm'
 require 'colorize' 
 
 class TimedSort
   include Algorithm
   
+
+  def initialize
+    get_menu
+  end
+  
+  private
   # Uses instance_methods to populate menu
   def get_menu
     sorted_methods = Algorithm.instance_methods.sort
@@ -51,13 +58,10 @@ class TimedSort
     response = gets.chomp!
   end
 
-
-
   # Creates big array that is used for sorting.
   def generate_random_array  
     big_array = []
-    # Adjust this value to to increase/decrease array size used for sorting.
-    i = 100
+    i = set_array_size.to_i
     
     while i >= 1 
       big_string = (0...50).map { ('a'..'z').to_a[rand(26)] }.join
@@ -78,4 +82,3 @@ class TimedSort
 
 end
 timer = TimedSort.new
-timer.get_menu
